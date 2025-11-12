@@ -27,3 +27,12 @@ export interface Skills {
   skillName: string;
   skillModifyer: string;
 }
+
+export interface Status {
+  name: string;
+  description: string;
+  levels?: Array<{
+    level: number;
+    description: string;
+  }>;
+}

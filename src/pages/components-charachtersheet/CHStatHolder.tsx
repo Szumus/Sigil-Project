@@ -15,11 +15,11 @@ const CHStatHolder = ({ statsName, numberOfInputs }: StatProps) => {
         <div className="flex items-center space-x-4">
           <input
             type="text"
-            className="border-b-2 text-center p-1 text-xl h-10 w-14 border-amber-600"
+            className="border-b-2 font-bold  text-center p-1 text-xl h-10 w-14 border-amber-600"
           />
           <input
             type="text"
-            className="border-b-2 text-center p-1 text-xl h-10 w-14 border-amber-600"
+            className="border-b-2 font-bold  text-center p-1 text-xl h-10 w-14 border-amber-600"
           />
           {/* Możesz dodać więcej inputów — zawsze będą po prawej */}
         </div>
@@ -37,7 +37,7 @@ const CHStatHolder = ({ statsName, numberOfInputs }: StatProps) => {
             key={index}
             value={values[index]}
             type="text"
-            className="border-b-2 text-center p-1 text-md h-10 w-8 border-amber-600"
+            className="border-b-2 font-bold  text-center p-1 text-md h-10 w-8 border-amber-600"
           />
         ))}
       </div>

@@ -3,6 +3,7 @@ import HpBar from "./components-charachtersheet/CHHpBar";
 import FuncStats from "./components-charachtersheet/CHFuncStats";
 import CHSkill from "./components-charachtersheet/CHSkill";
 import CHStats from "./components-charachtersheet/CHStats";
+import CHState from "./components-charachtersheet/CHState";
 
 const CreateCharachter = () => {
   return (
@@ -13,6 +14,7 @@ const CreateCharachter = () => {
       <div className="float-left">
         <HpBar />
         <FuncStats />
+        <CHState />
       </div>
       <div className="float-left ml-2">
         <CHSkill />

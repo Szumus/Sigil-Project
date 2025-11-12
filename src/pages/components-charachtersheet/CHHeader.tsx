@@ -1,7 +1,7 @@
 const Header = () => {
   return (
-    <div className="flex items-center space-x-6">
-      <form className="flex flex-wrap px-10 items-center space-x-10">
+    <div className="flex items-center ">
+      <form className="flex flex-wrap px-10 items-center space-x-4 ">
         <input
           type="text"
           placeholder="Imię"

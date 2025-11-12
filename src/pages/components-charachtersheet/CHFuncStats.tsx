@@ -60,7 +60,7 @@ const CHFuncStats = () => {
         <div className="border-2 flex w-64 h-16 rounded-2xl border-black items-center justify-center">
           <input
             type="text"
-            className="w-30 h-16 text-center border-r-2 border-black pl-2 text-4xl"
+            className="w-30 h-16 text-center border-r border-black pl-2 text-4xl"
             placeholder="SP"
           />
           <input

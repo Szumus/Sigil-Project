@@ -59,7 +59,7 @@ const CHSkill = () => {
                    checked:before:content-['✔'] checked:before:text-white checked:before:text-sm 
                    checked:before:flex checked:before:items-center checked:before:justify-center"
               />
-              <h3 className="text-md font-medium text-neutral-700 select-none">
+              <h3 className="text-md text-sm text-neutral-700 select-none">
                 {i.skillName}
               </h3>
               <div className="flex-1 flex justify-end">
@@ -75,7 +75,7 @@ const CHSkill = () => {
           {uniqSkills.map((i: Skills, index) => (
             <div
               key={index}
-              className="flex justify-between items-center text-sm py-1"
+              className="flex justify-between items-center  py-1"
             >
               {/* nazwa umiejętności */}
               <span className="flex-1">{i.skillName}</span>
