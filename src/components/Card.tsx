@@ -1,7 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import { CardProps } from "../types/props";
 import { FaArrowLeft } from "react-icons/fa";
 
-const Card = ({ title, desc, img, arrow }: CardProps) => {
+const Card = ({ title, desc, img, path }: CardProps) => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(path);
+  };
   return (
     <div className="relative m-10 rounded-xl shadow-2xl h-50 w-80 bg-white flex">
       {/* lewy panel */}
@@ -13,7 +18,7 @@ const Card = ({ title, desc, img, arrow }: CardProps) => {
 
         {/* przycisk w lewym dolnym rogu */}
         <button
-          onClick={arrow}
+          onClick={handleClick}
           className=" bg-amber-600 rounded-full absolute bottom-3 left-3 text-black text-md p-1 text-center hover:bg-amber-700 transition"
         >
           <FaArrowLeft

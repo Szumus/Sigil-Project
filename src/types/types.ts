@@ -22,3 +22,8 @@ export interface UserId {
   email: string;
   password: string;
 }
+
+export interface Skills {
+  skillName: string;
+  skillModifyer: string;
+}

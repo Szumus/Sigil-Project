@@ -39,7 +39,10 @@ const SignIn = () => {
       <div className="bg-white flex p-2 rounded-xl shadow-lg max-w-2xl">
         {/* LEWA STRONA - FORMULARZz */}
         <div className="flex flex-col justify-center items-center w-1/2 p-6">
-          <form className="flex flex-col items-center text-center gap-4 w-full max-w-sm">
+          <form
+            className="flex flex-col items-center text-center gap-4 w-full max-w-sm"
+            onSubmit={(e) => e.preventDefault()}
+          >
             <h1 className="text-2xl font-bold text-neutral-600 mb-2">
               Hi! Sign In!
               <br />
@@ -75,15 +78,16 @@ const SignIn = () => {
                 </button>
               </div>
             </div>
-            <div className="">
+            <div className="mt-3">
               <button
+                type="button"
                 onClick={signIn}
                 className="mt-4 bg-amber-500  text-black text-md px-6 py-2 w-full rounded-md hover:bg-amber-600 transition"
               >
                 Sign In
               </button>
               <span
-                className="
+                className=" 
               text-gray-400"
               >
                 Don't have an account?{" "}

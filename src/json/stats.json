@@ -1,0 +1,42 @@
+[
+  {
+    "statsName": "TECHNIKA",
+    "numberOfInputs": 0
+  },
+  {
+    "statsName": "SIŁA",
+    "numberOfInputs": 5
+  },
+  {
+    "statsName": "ZRĘCZNOŚĆ",
+    "numberOfInputs": 4
+  },
+  {
+    "statsName": "MAGICA",
+    "numberOfInputs": 5
+  },
+  {
+    "statsName": "INTELIGENCJA",
+    "numberOfInputs": 5
+  },
+  {
+    "statsName": "PERCEPCJA",
+    "numberOfInputs": 3
+  },
+  {
+    "statsName": "WYTRZYMAŁOŚĆ",
+    "numberOfInputs": 3
+  },
+  {
+    "statsName": "WITALNOŚĆ",
+    "numberOfInputs": 1
+  },
+  {
+    "statsName": "CHARYZMA",
+    "numberOfInputs": 4
+  },
+  {
+    "statsName": "WOLA",
+    "numberOfInputs": 5
+  }
+]
