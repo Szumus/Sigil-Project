@@ -36,3 +36,22 @@ export interface Status {
     description: string;
   }>;
 }
+
+export interface SelectedStatus {
+  name: string;
+  level?: number;
+}
+
+export interface StatProperty {
+  [key: string]: number | string;
+}
+
+export interface Stat {
+  value: number;
+  modifier: number;
+  propert?: StatProperty;
+}
+
+export interface Stats {
+  [statName: string]: Stat;
+}

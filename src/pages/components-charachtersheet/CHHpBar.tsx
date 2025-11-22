@@ -1,9 +1,12 @@
 import { useState } from "react";
 import ToolTip from "../../components/ToolTip";
 import { FaHeartCircleBolt } from "react-icons/fa6";
+import { useCharacterStore } from "../../store/useCharacterStore";
 
 const HpBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const updateCharacter = useCharacterStore((state) => state.updateCharacter);
   return (
     <div className="relative w-64">
       <div className="  overflow-visible  ">
@@ -13,12 +16,24 @@ const HpBar = () => {
           <input
             type="text"
             className="border-r-2 border-black text-center w-24 text-3xl"
-            placeholder="Hp z"
+            placeholder="Hp Z"
+            onChange={(e) =>
+              updateCharacter(
+                ["functionalStats", "hp", "internal", "current"],
+                Number(e.target.value)
+              )
+            }
           />
           <input
             type="text"
             className=" w-24 border-none text-center text-3xl"
             placeholder="Hp Z"
+            onChange={(e) =>
+              updateCharacter(
+                ["functionalStats", "hp", "internal", "max"],
+                Number(e.target.value)
+              )
+            }
           />
         </div>
         <div>
@@ -40,12 +55,24 @@ const HpBar = () => {
             <input
               type="text"
               className="border-r-2 border-black text-center w-24 text-3xl"
-              placeholder="Hp z"
+              placeholder="Hp W"
+              onChange={(e) =>
+                updateCharacter(
+                  ["functionalStats", "hp", "external", "current"],
+                  Number(e.target.value)
+                )
+              }
             />
             <input
               type="text"
               className=" w-24 border-none text-center text-3xl"
-              placeholder="Hp z"
+              placeholder="Hp W"
+              onChange={(e) =>
+                updateCharacter(
+                  ["functionalStats", "hp", "external", "max"],
+                  Number(e.target.value)
+                )
+              }
             />
           </div>
         </div>
@@ -63,11 +90,23 @@ const HpBar = () => {
             type="text"
             className="border-r-2 border-black text-center w-24 text-3xl"
             placeholder="Hp D"
+            onChange={(e) =>
+              updateCharacter(
+                ["functionalStats", "hp", "extra", "current"],
+                Number(e.target.value)
+              )
+            }
           />
           <input
             type="text"
             className=" w-24 border-none text-center text-3xl"
             placeholder="Hp D"
+            onChange={(e) =>
+              updateCharacter(
+                ["functionalStats", "hp", "extra", "max"],
+                Number(e.target.value)
+              )
+            }
           />
         </div>
       </div>

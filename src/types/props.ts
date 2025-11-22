@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface CardProps {
   title: string;
   desc: string;
@@ -10,5 +12,27 @@ export interface ToolTipProps {
 }
 export interface StatProps {
   numberOfInputs: number;
-  statName: string;
+  statsName: string;
+}
+
+export interface StatusSelectorProps {
+  states: Status[];
+  selectedStatus: string;
+  setSelectedStatus: (v: string) => void;
+  selectedLevel: number;
+  setSelectedLevel: (v: number) => void;
+  addStatus: () => void;
+  onPreviewEnter: (e: React.MouseEvent, status: Status, level: number) => void;
+  onPreviewLeave: () => void;
+}
+
+export interface StatusListProps {
+  statuses: SelectedStatus[];
+  states: Status[];
+  editingIndex: number | null;
+  toggleEdit: (i: number) => void;
+  updateLevel: (i: number, lvl: number) => void;
+  removeStatus: (i: number) => void;
+  onHoverEnter: (e: React.MouseEvent, status: Status, level: number) => void;
+  onHoverLeave: () => void;
 }

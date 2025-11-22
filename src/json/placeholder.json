@@ -1,0 +1,185 @@
+{
+  "character": {
+    "main": {
+      "id": 1,
+      "name": "name",
+      "race": "human",
+      "class": "warrior",
+      "level": 1,
+      "rank": "a"
+    },
+    "functionalStats": {
+      "hp": {
+        "internal": { "max": 10, "current": 0 },
+        "external": { "max": 10, "current": 0 },
+        "extra": { "max": 0, "current": 0 }
+      },
+      "staminaMana": {
+        "maxStamina": 10,
+        "currentStamina": 0,
+        "maxMana": 10,
+        "currentMana": 0,
+        "staminaRegen": 1,
+        "manaRegen": 1
+      },
+      "physicalStats": {
+        "ac": 5,
+        "maxRp": 0,
+        "natRp": 0,
+        "speed": 9,
+        "longSpeed": 18
+      }
+    },
+    "stats": {
+      "TEQ": {
+        "value": 0,
+        "modifier": 0
+      },
+      "STR": {
+        "value": 0,
+        "modifier": 0,
+
+        // to jest zależne od ilości inputów numer of inputs i z numberOfInputs pobieramy dane do property
+
+        "property": {
+          "dmgBonus": 0,
+          "armorPen": 0,
+          "strengtht": 0,
+          "atcBonus": 0,
+          "speedBonus": 0
+        }
+      },
+      "DEX": {
+        "value": 0,
+        "modifier": 0,
+        "property": {
+          "atcBonus": 0,
+          "numOfAtc": 1,
+          "evasionBonus": 0,
+          "fallDmgRed": 0,
+          "speedBonus": 0
+        }
+      },
+      "MAG": {
+        "value": 0,
+        "modifier": 0,
+        "property": {
+          "spellDmg": 0,
+          "maxManaBonus": 0,
+          "manaRegen": 0,
+          "spellPen": 0,
+          "spellAtcBonus": 0
+        }
+      },
+      "INT": {
+        "value": 0,
+        "modifier": 0,
+        "property": {
+          "cantripSlots": 0,
+          "spellSlots": 0,
+          "spellDmg": 0,
+          "spellAtcBonus": 0,
+          "manaEffciency": 0
+        }
+      },
+      "PER": {
+        "value": 0,
+        "modifier": 0,
+        "property": {
+          "rangedAtcBonus": 0,
+          "evesion": 0,
+          "passivePer": 0
+        }
+      },
+      "END": {
+        "value": 0,
+        "modifier": 0,
+        "property": {
+          "rp": 0,
+          "ac": 0,
+          "staRegen": 0
+        }
+      },
+      "WIT": {
+        "value": 0,
+        "modifier": 0,
+        "property": {
+          "hpBonus": 0,
+          "regenDice": "d4",
+          "regenBonus": 0
+        }
+      },
+      "CHA": {
+        "value": 0,
+        "modifier": 0,
+        "property": {
+          "talk": 0
+        }
+      },
+      "WILL": {
+        "value": 0,
+        "modifier": 0,
+        "property": {
+          "willBonus": 0,
+          "deathST": 0,
+          "staRegen": 0,
+          "willDice": "d4"
+        }
+      }
+    },
+    "skills": {
+      "basic": {
+        "athletics": {
+          "value": 0,
+          "prof": false,
+          "skillModifier": "STR"
+        },
+        "acrobatics": {
+          "value": 0,
+          "prof": false,
+          "skillModifier": "DEX"
+        },
+        "hiding": {
+          "value": 0,
+          "prof": false,
+          "skillModifier": "DEX"
+        },
+        "magicSense": {
+          "value": 0,
+          "prof": false,
+          "skillModifier": "MAG"
+        },
+        "mind": {
+          "value": 0,
+          "prof": false,
+          "skillModifier": "INT"
+        },
+        "search": {
+          "value": 0,
+          "prof": false,
+          "skillModifier": "DEX"
+        },
+        "sight": {
+          "value": 0,
+          "prof": false,
+          "skillModifier": "PER"
+        },
+        "hearing": {
+          "value": 0,
+          "prof": false,
+          "skillModifier": "PER"
+        },
+        "smell": {
+          "value": 0,
+          "prof": false,
+          "skillModifier": "PER"
+        },
+        "appearance": {
+          "value": 0,
+          "prof": false,
+          "skillModifier": "CHA"
+        }
+      }
+    }
+  }
+}

@@ -1,42 +1,70 @@
 [
   {
     "statsName": "TECHNIKA",
-    "numberOfInputs": 0
+    "numberOfInputs": 0,
+    "properties": []
   },
   {
     "statsName": "SIŁA",
-    "numberOfInputs": 5
+    "numberOfInputs": 5,
+    "properties": [
+      "dmgBonus",
+      "armorPen",
+      "strengtht",
+      "atcBonus",
+      "speedBonus"
+    ]
   },
   {
     "statsName": "ZRĘCZNOŚĆ",
-    "numberOfInputs": 4
+    "numberOfInputs": 4,
+    "properties": ["atcBonus", "numOfAtc", "evasionBonus", "fallDmgRed"]
   },
   {
     "statsName": "MAGICA",
-    "numberOfInputs": 5
+    "numberOfInputs": 5,
+    "properties": [
+      "spellDmg",
+      "maxManaBonus",
+      "manaRegen",
+      "spellPen",
+      "spellAtcBonus"
+    ]
   },
   {
     "statsName": "INTELIGENCJA",
-    "numberOfInputs": 5
+    "numberOfInputs": 5,
+    "properties": [
+      "cantripSlots",
+      "spellSlots",
+      "spellDmg",
+      "spellAtcBonus",
+      "manaEffciency"
+    ]
   },
   {
     "statsName": "PERCEPCJA",
-    "numberOfInputs": 3
+    "numberOfInputs": 3,
+    "properties": ["rangedAtcBonus", "evesion", "passivePer"]
   },
   {
     "statsName": "WYTRZYMAŁOŚĆ",
-    "numberOfInputs": 3
+    "numberOfInputs": 3,
+    "properties": ["rp", "ac", "staRegen"]
   },
   {
     "statsName": "WITALNOŚĆ",
-    "numberOfInputs": 1
+    "numberOfInputs": 1,
+    "properties": ["hpBonus"]
   },
   {
     "statsName": "CHARYZMA",
-    "numberOfInputs": 4
+    "numberOfInputs": 4,
+    "properties": ["talk"]
   },
   {
     "statsName": "WOLA",
-    "numberOfInputs": 5
+    "numberOfInputs": 5,
+    "properties": ["willBonus", "deathST", "staRegen", "willDice"]
   }
 ]
