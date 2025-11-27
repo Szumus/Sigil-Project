@@ -1,0 +1,83 @@
+[
+  {
+    "name": "ZMĘCZENIE",
+    "levels": [
+      {
+        "level": 1,
+        "description": "Utrudnienia w testach statystyk i umiejętności, lekko podwyższone koszty staminy"
+      },
+      {
+        "level": 2,
+        "description": "Utrudnienia we wszystkich testach statystyk i umiejętności, podwójne koszty staminy, regeneracja staminy zmniejszona"
+      },
+      {
+        "level": 3,
+        "description": "Utrudnienia we wszystkich testach statystyk i umiejętności, podwójne koszty staminy, regeneracja staminy zmniejszona do 1, maksymalna stamina zmniejszona o połowę"
+      },
+      {
+        "level": 4,
+        "description": "Utrudnienia we wszystkich testach statystyk i umiejętności, potrójne koszty staminy, brak regeneracji staminy, maksymalna stamina zmniejszona o 75%"
+      }
+    ]
+  },
+  {
+    "name": "OGŁUSZENIE",
+    "description": "Ogłuszona istota nie może się ruszać, automatycznie nie zdaje rzutów na STR/DEX/TEQ. Ataki na ogłuszonej istocie są wykonywane z ułatwieniem."
+  },
+  {
+    "name": "UNIERUCHOMIENIE",
+    "description": "Prędkość unieszkodliwionej istoty zostaje zmniejszona do 0. Ataki na istocie są wykonywane z ułatwieniem i przyjmuje ona karę -10 do Evasion."
+  },
+  {
+    "name": "ODSŁONIĘCIE",
+    "description": "Istota w stanie odsłonięcia nie jest w stanie podjąć następnej reakcji. Po zmarnowanej reakcji efekt zostaje przerwany. Jeśli reakcja nie zostanie zmarnowana do początku następnej tury lub akcji istoty stan automatycznie się kończy."
+  },
+  {
+    "name": "PARALIŻ",
+    "description": "Sparaliżowana istota nie może poruszać swoim ciałem co skutkuje tym, że jeśli maksymalny wynik jaki inna atakująca istota może rzucić na kości jest wyższy niż AC sparaliżowanej istoty to atakująca trafia zadając obrażenia krytyczne. Istota automatycznie nie zdaje rzuty na STR/DEX/TEQ."
+  },
+  {
+    "name": "POWALENIE",
+    "description": "Powalona istota leży na ziemi przez co nie jest w stanie wykonywać Evasion. Wciąż może wykonywać ataki jednak przyjmuje karę -5. Ataki wykonywane na leżącej istocie są wykonywane z ułatwieniem. Istota w swojej turze może wykorzystać prędkość krótkiego ruchu, aby się podnieść."
+  },
+  {
+    "name": "STRACH",
+    "description": "Strach to stan, który musi zostać wywołany przez inną istotę lub obiekt. Istota, która jest pod wpływem strachu ma utrudnienia w atakach przeciwko źródle strachu i nie może się do niego zbliżyć z własnej woli. W przypadku obecności testu na strach istota na końcu każdej swojej tury ponawia rzut."
+  },
+  {
+    "name": "PRZERAŻENIE",
+    "description": "Przerażona istota zacznie uciekać. Cały ruch w swojej turze wykorzysta, aby oddalić się od źródła przerażenia. W przypadku gdy nie wiadomo gdzie jest źródło biegnie do miejsca, które wydaje się mu bezpieczne."
+  },
+  {
+    "name": "PROWOKACJA",
+    "description": "Istoty sprowokowane na określonej istocie lub obiekcie będą próbowały za wszelką cenę przemieścić się do źródła prowokacji, wykorzystując do tego wszelkie możliwości i atakować go. Cel będzie ignorował inne istoty (wciąż unikając otrzymania obrażeń). Istota w każdej turze ponawia rzut na wyzwolenie się z prowokacji. Jeśli inna istota niż prowokująca zaatakuje sprowokowaną istotę ta zyska stały bonus +1 do testu przeciwko obecnej prowokacji. Obrażenia w HP wewnętrzne przyznają bonus +2."
+  },
+  {
+    "name": "REZYGNACJA",
+    "description": "Po otrzymaniu efektu rezygnacji wola walki istoty kompletnie znika, nie może podejmować żadnych akcji ofensywnych, ani defensywnych puki status jest aktywny."
+  },
+  {
+    "name": "ZAUROCZENIE",
+    "description": "Zauroczona istota nie może atakować istoty, która ją zauroczyła do puki ta druga nie będzie próbowała wyrządzić krzywdy tej pierwszej. Osoba rzucająca zauroczenie ma ułatwienie w rzutach na charyzmę na zauroczoną istotą."
+  },
+  {
+    "name": "OŚLEPIENIE",
+    "description": "Oślepiona istota automatycznie nie zdaje wszystkie rzuty oparte na wzrok. Wykonując ataki istota przyjmuje karę -10 do testów ataku. Ataki wykonywane na istocie mają ułatwienie. Istota nie może mieć ułatwień w Evasion."
+  },
+  {
+    "name": "UCISZENIE",
+    "description": "Istota taka nie jest w stanie mówić i wszelkie dźwięki, które wydaje są zagłuszone. Powoduje to też brak możliwości rzucania zaklęć wymagających inkantacji."
+  },
+  {
+    "name": "OBEZWŁADNIENIE",
+    "description": "Obezwładnione istoty nie mogą podejmować akcji, reakcji i ruchu."
+  },
+  {
+    "name": "ZATRUCIE",
+    "description": "Będąc zatrutym co turę otrzymujesz obrażenia bezpośrednio w HP wewnętrzne i nie jesteś w stanie ich redukować poprzez RP. Jeśli zostałeś zatruty to nie będziesz w stanie naturalnie przerwać efektu przez jakiś czas. Dopiero po upływie kilku tur będziesz w stanie rzucić na detoksykację."
+  },
+  {
+    "name": "KRWAWIENIE",
+    "description": "Krwawienie to stan, w którym z twojej rany sączy się krew. Podstawowo otrzymujesz co turę 1d4 obrażeń wewnętrznych nieredukowalnych przez RP. Krwawienie mija po podstawowym czasie 5 tur lub gdy zostanie zatamowane. Krwawienie może się kumulować co oznacza, że możesz mieć kilka efektów krwawienia jednocześnie. Jeśli w jednym momencie będziesz miał na sobie 6 efektów krwawienia jednocześnie otrzymujesz krwotok. Krwotok oznacza, że każda kość krwawienia jaką masz na sobie zadaje maksymalne obrażenia."
+  }
+]

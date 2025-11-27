@@ -1,0 +1,197 @@
+[
+  {
+    "statsName": "TECHNIKA",
+    "numberOfInputs": 0,
+    "properties": []
+  },
+  {
+    "statsName": "SIŁA",
+    "numberOfInputs": 5,
+    "properties": [
+      {
+        "name": "dmgBonus",
+        "icon": "/assets/icons/dmg1.png"
+      },
+      {
+        "name": "armorPen",
+        "icon": "/assets/icons/pen.png"
+      },
+      {
+        "name": "atcBonus",
+        "icon": "/assets/icons/atkBon.png"
+      },
+      {
+        "name": "strengtht",
+        "icon": "/assets/icons/kg.png"
+      },
+      {
+        "name": "speedBonus",
+        "icon": "/assets/icons/speed.png"
+      }
+    ]
+  },
+  {
+    "statsName": "ZRĘCZNOŚĆ",
+    "numberOfInputs": 5,
+    "properties": [
+      {
+        "name": "atcBonus",
+        "icon": "/assets/icons/atkBon.png"
+      },
+      {
+        "name": "numOfAtc",
+        "icon": "/assets/icons/dexAtack.png"
+      },
+      {
+        "name": "evasionBonus",
+        "icon": "/assets/icons/evasion.png"
+      },
+      {
+        "name": "fallDmgRed",
+        "icon": "/assets/icons/fallDmg.png"
+      },
+      {
+        "name": "speed",
+        "icon": "/assets/icons/speed.png"
+      }
+    ]
+  },
+  {
+    "statsName": "MAGICA",
+    "numberOfInputs": 5,
+    "properties": [
+      {
+        "name": "spellDmg",
+        "icon": "/assets/icons/magDmg.png"
+      },
+      {
+        "name": "magAttack",
+        "icon": "/assets/icons/magAttack.png"
+      },
+      {
+        "name": "spellPen",
+        "icon": "/assets/icons/magPen.png"
+      },
+      {
+        "name": "manaRegen",
+        "icon": "/assets/icons/mana Bonus.png"
+      },
+      {
+        "name": "manaRegen",
+        "icon": "/assets/icons/manaRegen.png"
+      }
+    ]
+  },
+  {
+    "statsName": "INTELIGENCJA",
+    "numberOfInputs": 5,
+    "properties": [
+      {
+        "name": "spellDmg",
+        "icon": "/assets/icons/magDmg.png"
+      },
+      {
+        "name": "manaEffciency",
+        "icon": "/assets/icons/manaEff.png"
+      },
+      {
+        "name": "spellAtcBonus",
+        "icon": "/assets/icons/magAttack.png"
+      },
+      {
+        "name": "cantripSlots",
+        "icon": "/assets/icons/spellSlot.png"
+      },
+      {
+        "name": "spellSlots",
+        "icon": "/assets/icons/spellSlot.png"
+      }
+    ]
+  },
+  {
+    "statsName": "PERCEPCJA",
+    "numberOfInputs": 3,
+    "properties": [
+      {
+        "name": "rangedAtcBonus",
+        "icon": "/assets/icons/perAttack.png"
+      },
+      {
+        "name": "evesion",
+        "icon": "/assets/icons/evasion.png"
+      },
+      {
+        "name": "passivePer",
+        "icon": "/assets/icons/passivPer.png"
+      }
+    ]
+  },
+  {
+    "statsName": "WYTRZYMAŁOŚĆ",
+    "numberOfInputs": 3,
+    "properties": [
+      {
+        "name": "rp",
+        "icon": "/assets/icons/penEnd.png"
+      },
+      {
+        "name": "ac",
+        "icon": "/assets/icons/Ac.png"
+      },
+      {
+        "name": "staRegen",
+        "icon": "/assets/icons/staRegen.png"
+      }
+    ]
+  },
+  {
+    "statsName": "WITALNOŚĆ",
+    "numberOfInputs": 3,
+    "properties": [
+      {
+        "name": "hpMaxBonus",
+        "icon": "/assets/icons/hp.png"
+      },
+      {
+        "name": "hpDice",
+        "icon": "/assets/icons/hpDice.png"
+      },
+      {
+        "name": "hpRegenBonus",
+        "icon": "/assets/icons/hpRegenBonus.png"
+      }
+    ]
+  },
+  {
+    "statsName": "CHARYZMA",
+    "numberOfInputs": 1,
+    "properties": [
+      {
+        "name": "talk",
+        "icon": "assets/icons/speek.png"
+      }
+    ]
+  },
+  {
+    "statsName": "WOLA",
+    "numberOfInputs": 4,
+    "properties": [
+      {
+        "name": "willBonus",
+        "icon": "/assets/icons/will.png"
+      },
+      {
+        "name": "deathST",
+        "icon": "/assets/icons/dhSt.png"
+      },
+      {
+        "name": "staRegen",
+        "icon": "/assets/icons/staRegen.png"
+      },
+      {
+        "name": "willDice",
+        "icon": "/assets/icons/willDice.png"
+      }
+    ]
+  }
+]
