@@ -2,6 +2,7 @@ import { useState,useEffect } from "react";
 import { IoMdAdd } from "react-icons/io";
 import { TiThMenu } from "react-icons/ti";
 import "../css/CHProf.css"; // Import stylów scrollbara
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 
 interface CHProfProps {
@@ -35,15 +36,48 @@ const addProf = (e :React.FormEvent<HTMLFormElement>) => {
   setProfArr((prev) => [...prev, prof.trim()]);
   setProf("");
 };
+const [currentIndex, setCurrentIndex] = useState<number>(0);
+
+const nextLang = () => {
+  if (languages.length === 0) return;
+  setCurrentIndex((prev) => (prev + 1) % languages.length);
+};
+
+const prevLang = () => {
+  if (languages.length === 0) return;
+  setCurrentIndex((prev) => (prev - 1 + languages.length) % languages.length);
+};
+
  return (
-    <div className="max-w-64 w-full h-60 mx-auto mt-4 border-2 border-black rounded-2xl group">
+    <div className="max-w-80 w-full h-60 mx-auto mt-4 border-2 border-black rounded-2xl group">
       {/* Nagłówek */}
       <div className="flex items-center justify-between border-b-2 border-black h-14 px-4">
         <h1 className="text-lg font-semibold">Języki:</h1>
-        <h1 className="text-lg m-auto">Pokaż</h1>
+      <div className="flex items-center gap-3 m-auto">
+
+  <button
+    onClick={prevLang}
+    className="px-2 py-1 bg-amber-600 rounded hover:bg-amber-700 transition"
+  >
+    <FaChevronLeft color="white"/>
+  </button>
+
+  <h1 className="text-lg font-semibold w-24 text-center">
+    {languages.length > 0 ? languages[currentIndex] : "Brak"}
+  </h1>
+
+  <button
+    onClick={nextLang}
+    className="px-2 py-1  bg-amber-600 rounded hover:bg-amber-700  transition"
+  >
+     <FaChevronRight color="white"/>
+  </button>
+
+</div>
+
         <TiThMenu
           onClick={() => setIsVisible(!isVisible)}
-          className="text-amber-600 m-auto hover:text-3xl text-2xl transition-all duration-150 cursor-pointer"
+          className="text-amber-600  hover:text-3xl text-2xl transition-all duration-150 cursor-pointer"
         />
       </div>
 
@@ -59,7 +93,7 @@ const addProf = (e :React.FormEvent<HTMLFormElement>) => {
             }`}
           >
             <div className="p-4 border-b-2 rounded-2xl w-full">
-              <form className="flex gap-4 w-full" onSubmit={addLanguages}>
+              <form className="flex gap-6 w-full" onSubmit={addLanguages}>
                 <input
                   type="text"
                   value={lan}
@@ -92,7 +126,7 @@ const addProf = (e :React.FormEvent<HTMLFormElement>) => {
             } p-4`}
           >
             <form className="flex justify-between" onClick={addProf}>
-            <h1 className="text-lg my-auto font-semibold">Biegłości</h1>
+            <h1 className="text-lg my-auto space-x-3 font-semibold">Biegłości</h1>
               <input
                 type="text"
                 value={prof}

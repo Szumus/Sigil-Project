@@ -8,7 +8,7 @@ const HpBar = () => {
 
   const updateCharacter = useCharacterStore((state: any) => state.updateCharacter);
   return (
-    <div className="relative w-64">
+    <div className="relative w-80">
       <div className="  overflow-visible  ">
         <div className="relative h-20 border-b-2 border-t-2 border-2 rounded-t-2xl border-black flex items-center justify-center">
           <div className="absolute -left-4 top-1/7 -translate-y-1/2 w-4 h-4 border-2 border-black rounded" />

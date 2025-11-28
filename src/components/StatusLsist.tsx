@@ -46,7 +46,7 @@ const StatusList: React.FC<Props> = ({
                   onMouseEnter={(e) => onHoverEnter(e, obj, status.level || 1)}
                   onMouseLeave={onHoverLeave}
                 >
-                  <div className="font-medium text-green-800">
+                  <div className="font-medium text-sm text-green-800">
                     {status.name}
                     {isFatigue && status.level && ` (Poziom ${status.level})`}
                   </div>

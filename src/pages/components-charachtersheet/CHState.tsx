@@ -64,7 +64,7 @@ const CHState = () => {
   };
 
   return (
-    <div className="border-2 mt-2 border-black rounded-2xl w-64 p-3 shadow-sm">
+    <div className="border-2 mt-2 border-black rounded-2xl w-80 p-3 shadow-sm">
       {/* WYBÓR STATUSU */}
       <StatusSelector
         states={states}

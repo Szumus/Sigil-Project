@@ -65,12 +65,12 @@
         "icon": "/assets/icons/magDmg.png"
       },
       {
-        "name": "magAttack",
-        "icon": "/assets/icons/magAttack.png"
-      },
-      {
         "name": "spellPen",
         "icon": "/assets/icons/magPen.png"
+      },
+      {
+        "name": "magAttack",
+        "icon": "/assets/icons/magAttack.png"
       },
       {
         "name": "manaRegen",
