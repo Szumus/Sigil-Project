@@ -6,6 +6,7 @@ import CHSkill from "./components-charachtersheet/CHSkill";
 import CHStats from "./components-charachtersheet/CHStats";
 import CHProf from "./components-charachtersheet/CHProf";
 import { useCharacterStore } from "../store/useCharacterStore";
+import { log } from "node:console";
 
 const CreateCharachter = () => {
   const updateCharacter = useCharacterStore((state:any) => state.updateCharacter);
@@ -19,6 +20,9 @@ const CreateCharachter = () => {
     updateCharacter(["proficiencies"], profArr);
     console.log(getCharacter());
   };
+  const smellProf = useCharacterStore.getState().character.skills.basic.smell.prof;
+
+  
 
   return (
     <div className="px-12 py-2 justify-center items-center">
