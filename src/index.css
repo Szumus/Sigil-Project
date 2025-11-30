@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+body {
+  background-color: #f4ecd4;
+}
+input {
+  outline: none;
+}
+input :placeholder-shown {
+  color: gray;
+}

@@ -1,0 +1,178 @@
+[
+  {
+    "statsName": "TECHNIKA",
+    "numberOfInputs": 0,
+    "properties": [],
+    "modifierBase": 0,
+    "modifierSteps": [
+      { "from": 0, "to": 19, "modifier": 0 },
+      { "from": 20, "to": 29, "modifier": 2 },
+      { "from": 30, "step": 10, "modifierStart": 3 }
+    ]
+  },
+  {
+    "statsName": "SIŁA",
+    "numberOfInputs": 5,
+    "properties": [
+      { "name": "dmgBonus", "icon": "/assets/icons/dmg1.png", "baseLevel": 10, "step": 5, "baseValue": 0, "stepValue": 1 },
+      { "name": "armorPen", "icon": "/assets/icons/pen.png", "baseLevel": 10, "step": 10, "baseValue": 0, "stepValue": 1 },
+      { "name": "atcBonus", "icon": "/assets/icons/atkBon.png", "baseLevel": 10, "step": 10, "baseValue": 0, "stepValue": 1 },
+      { "name": "strengtht", "icon": "/assets/icons/kg.png", "baseLevel": 10, "step": 1, "baseValue": 70, "stepValue": 3 },
+      { "name": "speedBonus", "icon": "/assets/icons/speed.png", "baseLevel": 15, "step": 10, "baseValue": 1.5, "stepValue": 1.5 }
+    ],
+  "modifierBase": -2,
+    "modifierSteps": [
+      { "from": 0, "to": 4, "modifier": -2 },
+      { "from": 5, "to": 9, "modifier": -1 },
+      { "from": 10, "to": 14, "modifier": 0 },
+      { "from": 15, "step": 5, "modifierStart": 1 }
+    ]
+  },
+
+ 
+  {
+    "statsName": "ZRĘCZNOŚĆ",
+    "numberOfInputs": 5,
+    "properties": [
+      { "name": "atcBonus", "icon": "/assets/icons/atkBon.png", "baseLevel": 10, "step": 5, "baseValue": 0, "stepValue": 1 },
+      { "name": "numOfAtc", "icon": "/assets/icons/dexAtack.png", "baseLevel": 15, "step": 5, "baseValue": 1, "stepValue": 1 },
+      { "name": "evasionBonus", "icon": "/assets/icons/evasion.png", "baseLevel": 10, "step": 5, "baseValue": 0, "stepValue": 1 },
+      { "name": "fallDmgRed", "icon": "/assets/icons/fallDmg.png", "baseLevel": 10, "step": 10, "baseValue": -3, "stepValue": -3 },
+      { "name": "speed", "icon": "/assets/icons/speed.png", "baseLevel": 10, "step": 10, "baseValue": 1.5, "stepValue": 1.5 }
+    ],
+    "modifierBase": -2,
+    "modifierSteps": [
+      { "from": 0, "to": 4, "modifier": -2 },
+      { "from": 5, "to": 9, "modifier": -1 },
+      { "from": 10, "to": 14, "modifier": 0 },
+      { "from": 15, "step": 5, "modifierStart": 1 }
+    ]
+  },
+
+  {
+    "statsName": "MAGICA",
+    "numberOfInputs": 5,
+    "properties": [
+      { "name": "spellDmg", "icon": "/assets/icons/magDmg.png", "baseLevel": 10, "step": 5, "baseValue": 0, "stepValue": 1 },
+      { "name": "spellPen", "icon": "/assets/icons/magPen.png", "baseLevel": 10, "step": 10, "baseValue": 0, "stepValue": 1 },
+      { "name": "magAttack", "icon": "/assets/icons/magAttack.png", "baseLevel": 10 ,"step": 10, "baseValue": 0, "stepValue": 1 },
+      { "name": "manaBonus", "icon": "/assets/icons/mana Bonus.png", "baseLevel": 10, "step": 5, "baseValue": 0, "stepValue": 10 },
+      { "name": "manaRegen", "icon": "/assets/icons/manaRegen.png", "baseLevel": 15, "step": 10, "baseValue": 0, "stepValue": 10 }
+    ],
+   "modifierBase": -2,
+    "modifierSteps": [
+      { "from": 0, "to": 4, "modifier": -2 },
+      { "from": 5, "to": 9, "modifier": -1 },
+      { "from": 10, "to": 14, "modifier": 0 },
+      { "from": 15, "step": 5, "modifierStart": 1 }
+    ]
+  },
+
+ 
+  {
+    "statsName": "INTELIGENCJA",
+    "numberOfInputs": 5,
+    "properties": [
+      { "name": "spellDmg", "icon": "/assets/icons/magDmg.png", "baseLevel": 10, "step": 5, "baseValue": 0, "stepValue": 1 },
+      { "name": "manaEffciency", "icon": "/assets/icons/manaEff.png", "baseLevel": 15, "step": 10, "baseValue": 0, "stepValue": 1 },
+      { "name": "spellAtcBonus", "icon": "/assets/icons/magAttack.png", "baseLevel": 10, "step": 5, "baseValue": 0, "stepValue": 1 },
+      { "name": "cantripSlots", "icon": "/assets/icons/spellSlot.png", "baseLevel": 10, "step": 10, "baseValue": 0, "stepValue": 2 },
+      { "name": "spellSlots", "icon": "/assets/icons/spellSlot.png", "baseLevel": 10, "step": 10, "baseValue": 0, "stepValue": 5 }
+    ],
+    "modifierBase": -2,
+    "modifierSteps": [
+      { "from": 0, "to": 4, "modifier": -2 },
+      { "from": 5, "to": 9, "modifier": -1 },
+      { "from": 10, "to": 14, "modifier": 0 },
+      { "from": 15, "step": 5, "modifierStart": 1 }
+    ]
+  },
+
+
+  
+
+  {
+    "statsName": "PERCEPCJA",
+    "numberOfInputs": 3,
+    "properties": [
+      { "name": "rangedAtcBonus", "icon": "/assets/icons/perAttack.png", "baseLevel": 10, "step": 5, "baseValue": 0, "stepValue": 1 },
+      { "name": "evesion", "icon": "/assets/icons/evasion.png", "baseLevel": 10, "step": 5, "baseValue": 0, "stepValue": 1 },
+      { "name": "passivePer", "icon": "/assets/icons/passivPer.png", "baseLevel": 10, "step": 10, "baseValue": 0, "stepValue": 1 }
+    ],
+    "modifierBase": -2,
+    "modifierSteps": [
+      { "from": 0, "to": 4, "modifier": -2 },
+      { "from": 5, "to": 9, "modifier": -1 },
+      { "from": 10, "to": 14, "modifier": 0 },
+      { "from": 15, "step": 5, "modifierStart": 1 }
+    ]
+  },
+
+  {
+    "statsName": "WYTRZYMAŁOŚĆ",
+    "numberOfInputs": 3,
+    "properties": [
+      { "name": "rp", "icon": "/assets/icons/penEnd.png", "baseLevel": 10, "step": 5, "baseValue": 0, "stepValue": 1 },
+      { "name": "ac", "icon": "/assets/icons/Ac.png", "baseLevel": 10, "step": 5, "baseValue": 0, "stepValue": 1 },
+      { "name": "staRegen", "icon": "/assets/icons/staRegen.png", "baseLevel": 10, "step": 10, "baseValue": 0, "stepValue": 1 }
+    ],
+    "modifierBase": -2,
+    "modifierSteps": [
+      { "from": 0, "to": 4, "modifier": -2 },
+      { "from": 5, "to": 9, "modifier": -1 },
+      { "from": 10, "to": 14, "modifier": 0 },
+      { "from": 15, "step": 5, "modifierStart": 1 }
+    ]
+  },
+
+  {
+    "statsName": "WITALNOŚĆ",
+    "numberOfInputs": 3,
+    "properties": [
+      { "name": "hpMaxBonus", "icon": "/assets/icons/hp.png", "baseLevel": 15, "step": 5, "baseValue": 10, "stepValue": 10 },
+      { "name": "hpDice", "icon": "/assets/icons/hpDice.png", "baseLevel": 15, "step": 15, "baseValue": 6, "stepValue": 2 },
+      { "name": "hpRegenBonus", "icon": "/assets/icons/hpRegenBonus.png", "baseLevel": 0, "step": 5, "baseValue": 1, "stepValue": 1 }
+    ],
+  "modifierBase": -2,
+    "modifierSteps": [
+      { "from": 0, "to": 4, "modifier": -2 },
+      { "from": 5, "to": 9, "modifier": -1 },
+      { "from": 10, "to": 14, "modifier": 0 },
+      { "from": 15, "step": 5, "modifierStart": 1 }
+    ]
+  },
+
+  {
+    "statsName": "CHARYZMA",
+    "numberOfInputs": 1,
+    "properties": [
+      { "name": "talk", "icon": "assets/icons/speek.png", "baseLevel": 10, "step": 5, "baseValue": 0, "stepValue": 1 }
+    ],
+   "modifierBase": -2,
+    "modifierSteps": [
+      { "from": 0, "to": 4, "modifier": -2 },
+      { "from": 5, "to": 9, "modifier": -1 },
+      { "from": 10, "to": 14, "modifier": 0 },
+      { "from": 15, "step": 5, "modifierStart": 1 }
+    ]
+  },
+
+  {
+    "statsName": "WOLA",
+    "numberOfInputs": 4,
+    "properties": [
+      { "name": "willBonus", "icon": "/assets/icons/will.png", "baseLevel": 10, "step": 5, "baseValue": 0, "stepValue": 1 },
+      { "name": "deathST", "icon": "/assets/icons/dhSt.png", "baseLevel": 10, "step": 10, "baseValue": 0, "stepValue": 1 },
+      { "name": "staRegen", "icon": "/assets/icons/staRegen.png", "baseLevel": 15, "step": 10, "baseValue": 0, "stepValue": 1 },
+      { "name": "willDice", "icon": "/assets/icons/willDice.png", "baseLevel": 10, "step": 10, "baseValue": 1, "stepValue": 1 }
+    ],
+  "modifierBase": -2,
+    "modifierSteps": [
+      { "from": 0, "to": 4, "modifier": -2 },
+      { "from": 5, "to": 9, "modifier": -1 },
+      { "from": 10, "to": 14, "modifier": 0 },
+      { "from": 15, "step": 5, "modifierStart": 1 }
+    ]
+  }
+
+]
