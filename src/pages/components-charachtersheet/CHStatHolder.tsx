@@ -5,7 +5,7 @@ import statConfigs from "../../json/stats.json";
 
 import { BsBookmarkPlusFill, BsFillBookmarkCheckFill } from "react-icons/bs";
 
-const CHStatHolder = ({ statsName, numberOfInputs, r }: StatProps) => {
+const CHStatHolder = ({ statsName, numberOfInputs }: StatProps) => {
   const character = useCharacterStore((state) => state.character);
   const updateCharacter = useCharacterStore((state) => state.updateCharacter);
 
@@ -91,7 +91,7 @@ const CHStatHolder = ({ statsName, numberOfInputs, r }: StatProps) => {
   const maxPoints = 44 + (level - 1);
   const baseSum = Object.entries(character.stats).reduce((sum, [key]) => sum + (key === "TECHNIKA" ? 10 : 4), 0);
   const currentSum = Object.entries(character.stats).reduce(
-    (sum, [key, stat]) => sum + (stat.value ?? (key === "TECHNIKA" ? 10 : 4)),
+    (sum, [key, stat]) => sum + ((stat as any).value ?? (key === "TECHNIKA" ? 10 : 4)),
     0
   );
   const remainingPoints = maxPoints - (currentSum - baseSum);
@@ -144,7 +144,7 @@ const CHStatHolder = ({ statsName, numberOfInputs, r }: StatProps) => {
               type="number"
               readOnly
               className="border-b-2 font-bold text-center p-1 text-xl h-10 w-14 border-amber-600 bg-gray-200"
-              value={statData.modifier}
+              value={statData.modifier ?? 0}
             />
             <button
               title="Edit"
@@ -164,7 +164,7 @@ const CHStatHolder = ({ statsName, numberOfInputs, r }: StatProps) => {
                 <input
                   type="text"
                   className={`border-b-2 font-bold text-center p-1 text-md h-8 w-12 border-amber-600 ${!editingAll ? "bg-gray-200" : ""}`}
-                  value={propValue}
+                  value={propValue ?? 0}
                   readOnly={!editingAll}
                   onChange={(e) => handlePropChange(prop.name, e.target.value)}
                 />

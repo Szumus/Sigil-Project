@@ -95,7 +95,7 @@ const StatusSelector: React.FC<Props> = ({
                 isFatigue
                   ? selectedObj.levels?.find((l) => l.level === selectedLevel)
                       ?.description || ""
-                  : selectedObj.description
+                  : selectedObj.description ?? ""
               )}
             </div>
           </div>
