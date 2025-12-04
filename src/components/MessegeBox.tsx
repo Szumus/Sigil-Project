@@ -5,11 +5,11 @@ const CustomMessageBox = ({
   onClose,
   onConfirm,
 }: {
-  message: string
-  cancleMessage: string
-  okMessage: string
-  onClose: () => void
-  onConfirm: () => void
+  message: string;
+  cancleMessage: string;
+  okMessage: string;
+  onClose: () => void;
+  onConfirm: () => void;
 }) => {
   return (
     <>
@@ -37,6 +37,6 @@ const CustomMessageBox = ({
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 export default CustomMessageBox;

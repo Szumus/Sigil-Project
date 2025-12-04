@@ -157,7 +157,7 @@ const CHStatHolder = ({ statsName, numberOfInputs }: StatProps) => {
 
   return (
     <div>
-      <div className="border-2 w-85 mb-3 h-36 flex flex-col border-black rounded-xl p-1 space-y-4">
+      <div className="border-2 w-85 mb-3 h-42.5 flex flex-col border-black rounded-xl p-1 space-y-4">
         <div className="flex justify-between items-center w-full">
           <h1 className="uppercase text-xl">{statsName}</h1>
           <div className="flex items-center space-x-4">

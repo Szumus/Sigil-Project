@@ -11,6 +11,7 @@ import CHQuick from "./components-charachtersheet/CHQuick";
 import ImageUpload from "../components/ImageLoad";
 import CHEffects from "./components-charachtersheet/CHEffects";
 import CHEquipment from "./components-charachtersheet/CHEquipment";
+import CHUniqSkills from "./components-charachtersheet/CHUniqSkills";
 
 const CreateCharachter = () => {
   const updateCharacter = useCharacterStore(
@@ -59,6 +60,7 @@ const CreateCharachter = () => {
               <div className="flex flex-col md:flex-row">
                 <div className="flex-1">
                   <CHSkill />
+                  <CHUniqSkills />
                 </div>
                 <div className="flex-1">
                   <CHQuick />

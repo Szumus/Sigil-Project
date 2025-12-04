@@ -11,7 +11,7 @@ const Lobby = () => {
       </h1>
       <div className="flex-wrap flex justify-center items-center min-h-100 ">
         <Card
-          title="Charchter Creator"
+          title="Charcter Creator"
           desc="Tu zaprojektujesz nową karte postaci! Gotowy?"
           img={characterImg}
           path="/charachter-creator"
@@ -27,6 +27,12 @@ const Lobby = () => {
           desc="Zagraj jedną ze swoich stworzonych postaci!"
           img={character}
           path="/final-charachter"
+        />
+        <Card
+          title="Combat Panel"
+          desc="O bogowie walka!"
+          img={character}
+          path="/combat-panel"
         />
       </div>
     </div>

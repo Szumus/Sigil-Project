@@ -52,7 +52,7 @@ const CHStats = () => {
 
   return (
     <div>
-      <div className="w-84 h-18 border-2 space-x-6 border-black rounded-xl flex items-center p-4 mb-3">
+      <div className="w-84 h-16 border-2 space-x-6 border-black rounded-xl flex items-center p-4 mb-3">
         <h1 className="text-xl">{teqique.statsName}</h1>
 
         <input

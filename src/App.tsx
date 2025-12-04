@@ -6,6 +6,7 @@ import Lobby from "./pages/Lobby";
 import CreateCharachter from "./pages/CreateCharachter";
 import RollDice from "./pages/RollDice";
 import FinalCharachter from "./pages/FinalCharachter";
+import CombatPanel from "./pages/CombatPanel";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/charachter-creator" element={<CreateCharachter />} />
           <Route path="/roll" element={<RollDice />} />
           <Route path="/final-charachter" element={<FinalCharachter />} />
+          <Route path="/combat-panel" element={<CombatPanel />} />
         </Routes>
       </Router>
     </>
