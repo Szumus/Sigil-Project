@@ -1,35 +1,37 @@
-import { useState } from "react"
-import { FaArrowLeft } from "react-icons/fa"
-import { useCharacterStore } from "../../store/useCharacterStore"
-import { useNavigate } from "react-router-dom"
-import CustomMessageBox from "../../components/MessegeBox"
+import { useState } from "react";
+import { FaArrowLeft } from "react-icons/fa";
+import { useCharacterStore } from "../../store/useCharacterStore";
+import { useNavigate } from "react-router-dom";
+import CustomMessageBox from "../../components/MessegeBox";
 
 // Stylowany MessageBox
-
 
 const Header = () => {
   const updateCharacter = useCharacterStore(
     (state: any) => state.updateCharacter
-  )
-  const navigate = useNavigate()
-  const [showModal, setShowModal] = useState(false)
+  );
+  const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
 
-  const handleClick = () => setShowModal(true)
+  const handleClick = () => setShowModal(true);
   const handleConfirm = () => {
-    setShowModal(false)
-    navigate("/lobby")
-  }
-  const handleCancel = () => setShowModal(false)
+    setShowModal(false);
+    navigate("/lobby");
+  };
+  const handleCancel = () => setShowModal(false);
 
   return (
     <div className="w-full px-4 relative z-40">
-      <form className="flex justify-between w-full items-center">
+      <form className="flex space-x-11 w-full items-center">
         <button
           type="button"
           onClick={handleClick}
           className="text-white bg-amber-600 hover:bg-amber-700 duration-100 rounded-full h-10 w-10"
         >
-          <FaArrowLeft color="white" className="m-auto hover:text-2xl duration-350" />
+          <FaArrowLeft
+            color="white"
+            className="m-auto hover:text-2xl duration-350"
+          />
         </button>
 
         {/* Tutaj zachowane wszystkie inputy */}
@@ -79,15 +81,15 @@ const Header = () => {
       {/* Modal */}
       {showModal && (
         <CustomMessageBox
-        cancleMessage="Anuluj"
-        okMessage="Utrac postep"
+          cancleMessage="Anuluj"
+          okMessage="Utrac postep"
           message="Wyjście z tego panelu skutkuje utraceniem postepu! Jesteś pewny?"
           onClose={handleCancel}
           onConfirm={handleConfirm}
         />
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

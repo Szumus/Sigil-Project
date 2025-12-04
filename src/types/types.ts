@@ -30,13 +30,12 @@ export interface Skills {
 
 export interface Status {
   name: string;
-  description?: string;  
+  description?: string;
   levels?: Array<{
     level: number;
     description: string;
   }>;
 }
-
 
 export interface SelectedStatus {
   name: string;
@@ -55,4 +54,11 @@ export interface Stat {
 
 export interface Stats {
   [statName: string]: Stat;
+}
+
+export interface Effect {
+  name: string;
+  desc: string;
+  isNegative: boolean;
+  isPositive: boolean;
 }

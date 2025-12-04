@@ -3,7 +3,8 @@ import { useCharacterStore } from "../../store/useCharacterStore";
 import { StatProps } from "../../types/props";
 import statConfigs from "../../json/stats.json";
 
-import { BsBookmarkPlusFill, BsFillBookmarkCheckFill } from "react-icons/bs";
+import { BsFillBookmarkCheckFill } from "react-icons/bs";
+import { MdEdit } from "react-icons/md";
 
 const CHStatHolder = ({ statsName, numberOfInputs }: StatProps) => {
   const character = useCharacterStore((state) => state.character);
@@ -11,6 +12,12 @@ const CHStatHolder = ({ statsName, numberOfInputs }: StatProps) => {
 
   const statConfig = statConfigs.find((s) => s.statsName === statsName);
 
+  const [editingAll, setEditingAll] = useState(false);
+  const [manualProps, setManualProps] = useState<{ [key: string]: boolean }>(
+    {}
+  );
+
+  // Oblicza modifier na podstawie value
   const calculateModifier = (value: number, steps: any[]) => {
     if (!steps) return 0;
 
@@ -20,15 +27,20 @@ const CHStatHolder = ({ statsName, numberOfInputs }: StatProps) => {
       }
     }
 
-    const progressiveStep = steps.find((s) => s.step !== undefined && value >= s.from);
+    const progressiveStep = steps.find(
+      (s) => s.step !== undefined && value >= s.from
+    );
     if (progressiveStep) {
-      const extra = Math.floor((value - progressiveStep.from) / progressiveStep.step);
+      const extra = Math.floor(
+        (value - progressiveStep.from) / progressiveStep.step
+      );
       return (progressiveStep.modifierStart ?? 0) + extra;
     }
 
     return 0;
   };
 
+  // Oblicza wartości property na podstawie value
   const calculatePropertyValue = (prop: any, value: number) => {
     if (prop.name === "passivePer") return Math.floor(value / 2);
     if (prop.name === "hpDice") {
@@ -48,88 +60,103 @@ const CHStatHolder = ({ statsName, numberOfInputs }: StatProps) => {
       return "d20";
     }
     if (statsName === "INTELIGENCJA") {
-      if (prop.name === "spellSlots") return value < 10 ? 2 : 2 + Math.floor(value / 10) * 5;
-      if (prop.name === "cantripSlots") return value < 10 ? 2 : 2 + Math.floor(value / 10) * 2;
+      if (prop.name === "spellSlots")
+        return value < 10 ? 2 : 2 + Math.floor(value / 10) * 5;
+      if (prop.name === "cantripSlots")
+        return value < 10 ? 2 : 2 + Math.floor(value / 10) * 2;
     }
     if (statsName === "ZRĘCZNOŚĆ" && prop.name === "numOfAtc") {
       if (value < 20) return 1;
       return 1 + Math.floor((value - 20) / 20) + 1;
     }
-
     if (!prop.step) return prop.baseValue ?? 0;
 
     const extraSteps = Math.floor((value - prop.baseLevel) / prop.step);
     return (prop.baseValue ?? 0) + extraSteps * (prop.stepValue ?? 0);
   };
 
-  const [editingAll, setEditingAll] = useState(false);
-
+  // Inicjalizacja statystyki, jeśli jej nie ma
   useEffect(() => {
     if (!character.stats[statsName] && statConfig) {
       const defaultProperties: any = {};
       (statConfig.properties || []).forEach((prop: any) => {
         defaultProperties[prop.name] = calculatePropertyValue(
           prop,
-          statConfig.statsName === "TECHNIKA" ? 10 : 4
+          statsName === "TECHNIKA" ? 10 : 4
         );
       });
 
-      const initialValue = statConfig.statsName === "TECHNIKA" ? 10 : 4;
+      const initialValue = statsName === "TECHNIKA" ? 10 : 4;
 
       updateCharacter(["stats", statsName], {
         value: initialValue,
         modifier: calculateModifier(initialValue, statConfig.modifierSteps),
         property: defaultProperties,
       });
+
+      setManualProps({});
     }
   }, [character.stats, statsName, statConfig, updateCharacter]);
 
   const statData = character.stats[statsName] || { property: {} };
-  const propertiesToRender = statConfig?.properties.slice(0, numberOfInputs) || [];
+  const propertiesToRender =
+    statConfig?.properties.slice(0, numberOfInputs) || [];
 
   const level = character.main.level ?? 1;
   const maxPoints = 44 + (level - 1);
-  const baseSum = Object.entries(character.stats).reduce((sum, [key]) => sum + (key === "TECHNIKA" ? 10 : 4), 0);
+  const baseSum = Object.entries(character.stats).reduce(
+    (sum, [key]) => sum + (key === "TECHNIKA" ? 10 : 4),
+    0
+  );
   const currentSum = Object.entries(character.stats).reduce(
-    (sum, [key, stat]) => sum + ((stat as any).value ?? (key === "TECHNIKA" ? 10 : 4)),
+    (sum, [key, stat]) =>
+      sum + ((stat as any).value ?? (key === "TECHNIKA" ? 10 : 4)),
     0
   );
   const remainingPoints = maxPoints - (currentSum - baseSum);
 
+  // Obsługa zmiany wartości głównej statystyki
   const handleValueChange = (newValue: number) => {
     const oldValue = statData.value ?? (statsName === "TECHNIKA" ? 10 : 4);
     const diff = newValue - oldValue;
 
-    if (diff > 0 && diff > remainingPoints) return;
+    // Ograniczenie remainingPoints tylko jeśli nie jesteśmy w trybie edit
+    if (!editingAll && diff > 0 && diff > remainingPoints) return;
 
     const limitedValue = Math.max(1, newValue);
-    const newModifier = calculateModifier(limitedValue, statConfig?.modifierSteps || []);
+    const newModifier = calculateModifier(
+      limitedValue,
+      statConfig?.modifierSteps || []
+    );
 
     updateCharacter(["stats", statsName, "value"], limitedValue);
     updateCharacter(["stats", statsName, "modifier"], newModifier);
 
+    // Aktualizacja properties dynamicznie, ale nie nadpisujemy ręcznie zmienionych
     propertiesToRender.forEach((prop: any) => {
-      if (!editingAll) {
+      if (!manualProps[prop.name]) {
         const newPropValue = calculatePropertyValue(prop, limitedValue);
-        updateCharacter(["stats", statsName, "property", prop.name], newPropValue);
+        updateCharacter(
+          ["stats", statsName, "property", prop.name],
+          newPropValue
+        );
       }
     });
   };
 
+  // Toggle trybu edit
   const toggleEditingAll = () => {
     setEditingAll((prev) => !prev);
   };
 
+  // Obsługa ręcznej zmiany property
   const handlePropChange = (propName: string, value: any) => {
     updateCharacter(["stats", statsName, "property", propName], value);
+    setManualProps((prev) => ({ ...prev, [propName]: true }));
   };
 
   return (
-    
     <div>
-
-    <div>
-     
       <div className="border-2 w-85 mb-3 h-36 flex flex-col border-black rounded-xl p-1 space-y-4">
         <div className="flex justify-between items-center w-full">
           <h1 className="uppercase text-xl">{statsName}</h1>
@@ -151,30 +178,48 @@ const CHStatHolder = ({ statsName, numberOfInputs }: StatProps) => {
               className="mt-1 w-7 h-7 text-xs bg-amber-600 hover:bg-amber-700 hover:w-8 hover:h-8 duration-200 flex justify-center items-center rounded"
               onClick={toggleEditingAll}
             >
-              {editingAll ? <BsFillBookmarkCheckFill size={20} color="white" /> : <BsBookmarkPlusFill size={20} color="white" />}
+              {editingAll ? (
+                <BsFillBookmarkCheckFill size={20} color="white" />
+              ) : (
+                <MdEdit size={20} color="white" />
+              )}
             </button>
           </div>
         </div>
 
-        <div className={["flex items-center space-x-4", numberOfInputs > 2 ? "justify-between" : "space-x-10 justify-center"].join(" ")}>
+        <div
+          className={[
+            "flex items-center space-x-4",
+            numberOfInputs > 2
+              ? "justify-between"
+              : "space-x-10 justify-center",
+          ].join(" ")}
+        >
           {propertiesToRender.map((prop: any, index) => {
             const propValue = statData.property?.[prop.name] ?? 0;
             return (
               <div key={index} className="flex flex-col items-center">
                 <input
                   type="text"
-                  className={`border-b-2 font-bold text-center p-1 text-md h-8 w-12 border-amber-600 ${!editingAll ? "bg-gray-200" : ""}`}
+                  className={`border-b-2 font-bold text-center p-1 text-md h-8 w-12 border-amber-600 ${
+                    !editingAll ? "bg-gray-200" : ""
+                  }`}
                   value={propValue ?? 0}
                   readOnly={!editingAll}
                   onChange={(e) => handlePropChange(prop.name, e.target.value)}
                 />
-                {prop.icon && <img src={prop.icon} alt={prop.name} className="mt-1 w-10 h-10 object-contain" />}
+                {prop.icon && (
+                  <img
+                    src={prop.icon}
+                    alt={prop.name}
+                    className="mt-1 w-10 h-10 object-contain"
+                  />
+                )}
               </div>
             );
           })}
         </div>
       </div>
-    </div>
     </div>
   );
 };

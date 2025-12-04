@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Skills } from "../../types/types";
 import { IoMdAdd } from "react-icons/io";
 import { useCharacterStore } from "../../store/useCharacterStore"; // Dostosuj ścieżkę
+import { FaCheck } from "react-icons/fa";
 
 const CHSkill = () => {
   const stats = [
@@ -70,6 +71,7 @@ const CHSkill = () => {
       skillName: form.skillName.value,
       skillModifyer: form.skillModifyer.value,
     };
+    if (newSkill.skillName.trim() === "") return;
     setUniqSkills([...uniqSkills, newSkill]);
     form.reset();
   };
@@ -86,8 +88,8 @@ const CHSkill = () => {
   };
 
   return (
-    <div className="border-2 flex border-black w-90 rounded-2xl h-85">
-      <div className="float-left h-84 border-black w-45 border-r">
+    <div className="border-2 flex border-black w-96 rounded-2xl h-85">
+      <div className="float-left h-84 border-black w-48 border-r">
         <div className="overflow-y-auto px-2 pb-1">
           {skills.map((i: Skills, index) => {
             const storeKey = skillKeyMap[i.skillName];
@@ -98,17 +100,38 @@ const CHSkill = () => {
                 key={index}
                 className="flex items-center gap-1 cursor-pointer py-1"
               >
-                <input
-                  type="checkbox"
-                  checked={skillData.prof || false}
-                  onChange={(e) => {
-                    updateCharacter(
-                      ["skills", "basic", storeKey, "prof"],
-                      e.target.checked
-                    );
-                  }}
-                  className="appearance-none w-5 h-5 border-2 border-gray-500 rounded-md cursor-pointer checked:bg-amber-500 checked:border-amber-600 transition-all duration-200 hover:border-amber-400 shadow-sm checked:before:content-['✔'] checked:before:text-white checked:before:text-sm checked:before:flex checked:before:items-center checked:before:justify-center"
-                />
+                <label className="relative inline-flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={skillData.prof || false}
+                    onChange={(e) => {
+                      updateCharacter(
+                        ["skills", "basic", storeKey, "prof"],
+                        e.target.checked
+                      );
+                    }}
+                    className="peer hidden"
+                  />
+
+                  <div
+                    className="
+    w-5 h-5 
+    border-2 border-gray-500 
+    rounded-md 
+    flex items-center justify-center
+    transition-all duration-200
+    peer-checked:bg-amber-500 
+    peer-checked:border-amber-600 
+    hover:border-amber-400
+    shadow-sm
+  "
+                  >
+                    {skillData.prof && (
+                      <FaCheck className="text-white text-sm" />
+                    )}
+                  </div>
+                </label>
+
                 <h3 className="text-md text-sm text-neutral-700 select-none">
                   {i.skillName}
                 </h3>
@@ -132,7 +155,7 @@ const CHSkill = () => {
         </div>
       </div>
 
-      <div className="float-right h-84 w-45 border-l border-black flex flex-col justify-between">
+      <div className="float-right h-84 w-48 border-l border-black flex flex-col justify-between">
         <div className="overflow-y-auto px-2">
           {uniqSkills.map((i: Skills, index) => (
             <div key={index} className="flex justify-between items-center py-1">
@@ -153,7 +176,7 @@ const CHSkill = () => {
             type="text"
             name="skillName"
             placeholder="Add Skill"
-            className="placeholder:text-gray-400 placeholder:text-sm border-b-2 border-amber-600 w-18"
+            className="placeholder:text-gray-400 placeholder:text-sm border-b-2 border-amber-600 w-24"
           />
           <select
             name="skillModifyer"

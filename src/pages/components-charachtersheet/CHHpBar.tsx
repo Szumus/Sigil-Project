@@ -6,7 +6,9 @@ import { useCharacterStore } from "../../store/useCharacterStore";
 const HpBar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const updateCharacter = useCharacterStore((state: any) => state.updateCharacter);
+  const updateCharacter = useCharacterStore(
+    (state: any) => state.updateCharacter
+  );
   return (
     <div className="relative w-80">
       <div className="  overflow-visible  ">
@@ -14,7 +16,7 @@ const HpBar = () => {
           <div className="absolute -left-4 top-1/7 -translate-y-1/2 w-4 h-4 border-2 border-black rounded" />
           <div className="absolute -left-4 not-only:top-1/2 -translate-y-1/2 w-4 h-4 border-2 border-black rounded " />
           <input
-            type="text"
+            type="number"
             className="border-r-2 border-black text-center w-24 text-3xl"
             placeholder="Hp Z"
             onChange={(e) =>
@@ -25,7 +27,7 @@ const HpBar = () => {
             }
           />
           <input
-            type="text"
+            type="number"
             className=" w-24 border-none text-center text-3xl"
             placeholder="Hp Z"
             onChange={(e) =>
@@ -53,7 +55,7 @@ const HpBar = () => {
             </div>
 
             <input
-              type="text"
+              type="number"
               className="border-r-2 border-black text-center w-24 text-3xl"
               placeholder="Hp W"
               onChange={(e) =>
@@ -64,7 +66,7 @@ const HpBar = () => {
               }
             />
             <input
-              type="text"
+              type="number"
               className=" w-24 border-none text-center text-3xl"
               placeholder="Hp W"
               onChange={(e) =>
@@ -87,7 +89,7 @@ const HpBar = () => {
     }`}
         >
           <input
-            type="text"
+            type="number"
             className="border-r-2 border-black text-center w-24 text-3xl"
             placeholder="Hp D"
             onChange={(e) =>
@@ -98,7 +100,7 @@ const HpBar = () => {
             }
           />
           <input
-            type="text"
+            type="number"
             className=" w-24 border-none text-center text-3xl"
             placeholder="Hp D"
             onChange={(e) =>

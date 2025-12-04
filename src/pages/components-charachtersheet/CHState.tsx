@@ -4,62 +4,70 @@ import StatusSelector from "../../components/StatusSelector";
 import StatusList from "../../components/StatusLsist";
 import ToolTips from "../../components/ToolTips";
 import { Status, SelectedStatus } from "../../types/types";
+import { useCharacterStore } from "../../store/useCharacterStore";
 
 const states: Status[] = rawStates;
 
 const CHState = () => {
   const [selectedStatus, setSelectedStatus] = useState("");
   const [selectedLevel, setSelectedLevel] = useState(1);
-  const [currentStatuses, setCurrentStatuses] = useState<SelectedStatus[]>([]);
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
 
   const [tooltipText, setTooltipText] = useState("");
   const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
   const [tooltipVisible, setTooltipVisible] = useState(false);
 
+  // ✅ STATUSY Z ZUSTAND
+  const currentStatuses = useCharacterStore(
+    (state) => state.character.statuses
+  );
+
+  const updateCharacter = useCharacterStore((state) => state.updateCharacter);
+
   useEffect(() => {
     setSelectedLevel(1);
   }, [selectedStatus]);
 
+  // ✅ DODAWANIE DO ZUSTAND
   const addStatus = () => {
-    if (selectedStatus) {
-      setCurrentStatuses((prev) => [
-        ...prev,
-        {
-          name: selectedStatus,
-          level: selectedStatus === "ZMĘCZENIE" ? selectedLevel : undefined,
-        },
-      ]);
+    if (!selectedStatus) return;
 
-      setSelectedStatus("");
-      setSelectedLevel(1);
-    }
+    const newStatus: SelectedStatus = {
+      name: selectedStatus,
+      level: selectedStatus === "ZMĘCZENIE" ? selectedLevel : undefined,
+    };
+
+    updateCharacter(["statuses"], [...currentStatuses, newStatus]);
+
+    setSelectedStatus("");
+    setSelectedLevel(1);
   };
 
+  // ✅ USUWANIE Z ZUSTAND
   const removeStatus = (index: number) => {
-    setCurrentStatuses((prev) => prev.filter((_, i) => i !== index));
+    const updated = currentStatuses.filter((_, i) => i !== index);
+    updateCharacter(["statuses"], updated);
+
     if (editingIndex === index) setEditingIndex(null);
   };
 
+  // ✅ EDYCJA POZIOMU Z ZUSTAND
   const updateLevel = (index: number, lvl: number) => {
-    setCurrentStatuses((prev) =>
-      prev.map((s, i) => (i === index ? { ...s, level: lvl } : s))
+    const updated = currentStatuses.map((s, i) =>
+      i === index ? { ...s, level: lvl } : s
     );
+
+    updateCharacter(["statuses"], updated);
   };
 
   const toggleEdit = (i: number) =>
     setEditingIndex((prev) => (prev === i ? null : i));
 
-  const showTooltip = (
-    e: React.MouseEvent,
-    status: Status,
-    level: number
-  ) => {
+  const showTooltip = (e: React.MouseEvent, status: Status, level: number) => {
     let desc = status.description;
 
     if (status.levels) {
-      desc =
-        status.levels.find((l) => l.level === level)?.description || desc;
+      desc = status.levels.find((l) => l.level === level)?.description || desc;
     }
 
     setTooltipText(desc || "");
@@ -98,6 +106,7 @@ const CHState = () => {
         text={tooltipText}
         x={tooltipPos.x}
         y={tooltipPos.y}
+        what="statusu"
       />
     </div>
   );

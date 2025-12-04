@@ -22,10 +22,15 @@ export const useCharacterStore = create<CharactersState>((set, get) => ({
     },
     languages: [],
     proficiencies: [],
+
+    // ✅ TU
+    statuses: [],
   },
+
   updateCharacter: (path: string[], value: any) =>
-    set((state: CharactersState) => {
-      if (!path || path.some((p) => p === undefined || p === null)) return state;
+    set((state) => {
+      if (!path || path.some((p) => p === undefined || p === null))
+        return state;
 
       let updated = { ...state.character };
       let obj: any = updated;
@@ -40,5 +45,6 @@ export const useCharacterStore = create<CharactersState>((set, get) => ({
 
       return { ...state, character: updated };
     }),
+
   getCharacter: () => get().character,
 }));
