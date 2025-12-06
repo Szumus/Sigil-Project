@@ -1,7 +1,9 @@
-import { useState, ChangeEvent } from "react";
+import { ChangeEvent } from "react";
+import { useCharacterStore } from "../store/useCharacterStore";
 
 const ImageUpload: React.FC = () => {
-  const [image, setImage] = useState<string | null>(null);
+  const image = useCharacterStore((state) => state.character.art);
+  const updateCharacter = useCharacterStore((state) => state.updateCharacter);
 
   const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -10,7 +12,7 @@ const ImageUpload: React.FC = () => {
       const reader = new FileReader();
 
       reader.onload = () => {
-        setImage(reader.result as string);
+        updateCharacter(["art"], reader.result as string); // ✅ POPRAWNA ŚCIEŻKA
       };
 
       reader.readAsDataURL(file);
@@ -19,7 +21,6 @@ const ImageUpload: React.FC = () => {
 
   return (
     <div className="p-2 border-2 rounded-2xl w-80 mt-2 flex flex-col items-center">
-      {/* Ukryty input */}
       <input
         type="file"
         accept="image/*"
@@ -28,7 +29,6 @@ const ImageUpload: React.FC = () => {
         id="fileInput"
       />
 
-      {/* Stylizowany przycisk */}
       <label
         htmlFor="fileInput"
         className="cursor-pointer bg-amber-600 w-full text-center text-md hover:bg-amber-700 text-white px-4 py-2 rounded-lg shadow-md transition"
@@ -36,7 +36,6 @@ const ImageUpload: React.FC = () => {
         Wybierz zdjęcie
       </label>
 
-      {/* Podgląd zdjęcia */}
       {image && (
         <div className="mt-4">
           <img

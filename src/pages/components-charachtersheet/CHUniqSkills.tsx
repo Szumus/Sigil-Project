@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import { MdAdd } from "react-icons/md";
 import CustomMessageBox from "../../components/MessegeBox";
+import { useCharacterStore } from "../../store/useCharacterStore";
 
 type SkillStat = {
   type: string;
@@ -19,6 +20,10 @@ type Skill = {
 const CHUniqSkills = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
+  // ✅ ZUSTAND
+  const { character, updateCharacter } = useCharacterStore();
+  const skills = (character.uniqSkills as Skill[]) || [];
+
   // INPUTY NOWEGO SKILLA
   const [skillName, setSkillName] = useState("");
   const [skillDesc, setSkillDesc] = useState("");
@@ -26,9 +31,6 @@ const CHUniqSkills = () => {
   const [stats, setStats] = useState<SkillStat[]>([
     { type: "MANA", customType: "", cost: "" },
   ]);
-
-  // LISTA SKILLI
-  const [skills, setSkills] = useState<Skill[]>([]);
 
   // POTWIERDZENIE USUWANIA
   const [skillToDelete, setSkillToDelete] = useState<Skill | null>(null);
@@ -38,7 +40,7 @@ const CHUniqSkills = () => {
 
   // DODAWANIE KOLEJNEGO KOSZTU (MAX 3)
   const addStat = () => {
-    if (stats.length >= 3) return; // ograniczenie do max 3
+    if (stats.length >= 3) return;
     setStats([...stats, { type: "MANA", customType: "", cost: "" }]);
   };
 
@@ -59,9 +61,10 @@ const CHUniqSkills = () => {
     newStats[index].cost = value;
     setStats(newStats);
   };
+
   const [isExpanded, setIsExpanded] = useState(false);
 
-  // ZAPIS NOWEGO SKILLA
+  // ✅ ZAPIS NOWEGO SKILLA → ZUSTAND
   const addSkill = () => {
     if (!skillName || !skillDesc) {
       alert("Uzupełnij nazwę i opis!");
@@ -81,12 +84,24 @@ const CHUniqSkills = () => {
       cost: costString,
     };
 
-    setSkills((prev) => [...prev, newSkill]);
+    const updated = [...skills, newSkill];
+    updateCharacter(["uniqSkills"], updated);
 
     // RESET FORMULARZA
     setSkillName("");
     setSkillDesc("");
     setStats([{ type: "MANA", customType: "", cost: "" }]);
+  };
+
+  // ✅ USUWANIE SKILLA → ZUSTAND
+  const deleteSkill = () => {
+    if (!skillToDelete) return;
+
+    const updated = skills.filter((s) => s.id !== skillToDelete.id);
+    updateCharacter(["uniqSkills"], updated);
+
+    setSkillToDelete(null);
+    setShowConfirm(false);
   };
 
   return (
@@ -102,6 +117,7 @@ const CHUniqSkills = () => {
           </button>
           <h1 className="font-bold mx-auto">Umiejętności specjalne</h1>
         </div>
+
         <div
           className={`transition-all border-b-2 rounded-2xl duration-500 ease-in-out overflow-hidden ${
             isVisible ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0"
@@ -191,7 +207,7 @@ const CHUniqSkills = () => {
           </div>
         </div>
 
-        {/* LISTA SKILLI Z ROZWIJANYM OPISem */}
+        {/* LISTA SKILLI */}
         {skills.map((skill) => {
           const shortDesc =
             skill.description.length > 20
@@ -243,18 +259,14 @@ const CHUniqSkills = () => {
         })}
       </div>
 
-      {/* CustomMessageBox */}
+      {/* ✅ CustomMessageBox */}
       {showConfirm && skillToDelete && (
         <CustomMessageBox
           message={`Czy na pewno chcesz usunąć skilla "${skillToDelete.name}"?`}
           cancleMessage="Anuluj"
           okMessage="Usuń"
           onClose={() => setShowConfirm(false)}
-          onConfirm={() => {
-            setSkills((prev) => prev.filter((s) => s.id !== skillToDelete.id));
-            setSkillToDelete(null);
-            setShowConfirm(false);
-          }}
+          onConfirm={deleteSkill}
         />
       )}
     </div>

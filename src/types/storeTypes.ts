@@ -7,9 +7,17 @@ export interface Character {
   skills: any;
   languages: string[];
   proficiencies: string[];
+  uniqSkills: any;
+  quick: any;
+  effects: any;
+  eq: any;
+  art: string | null;
 
   // ✅ DODAJEMY STATUSY
   statuses: SelectedStatus[];
+}
+export interface CharacterArt {
+  image: string | null; // base64 z inputa
 }
 
 export interface CharactersState {

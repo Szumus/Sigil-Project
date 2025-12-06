@@ -23,8 +23,11 @@ export const useCharacterStore = create<CharactersState>((set, get) => ({
     languages: [],
     proficiencies: [],
 
-    // ✅ TU
     statuses: [],
+    quick: [],
+    effects: {},
+    uniqSkills: [],
+    eq: [],
   },
 
   updateCharacter: (path: string[], value: any) =>

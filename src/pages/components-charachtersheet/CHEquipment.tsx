@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import { IoMdAdd } from "react-icons/io";
+import { useCharacterStore } from "../../store/useCharacterStore";
 
 interface EquipmentItem {
   name: string;
@@ -12,7 +13,11 @@ interface EquipmentItem {
 
 const CHEquipment = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
-  const [eq, setEq] = useState<EquipmentItem[]>([]);
+
+  // ✅ ZUSTAND
+  const { character, updateCharacter } = useCharacterStore();
+  const eq = (character.eq as EquipmentItem[]) || [];
+
   const [itemName, setItemName] = useState<string>("");
   const [itemQuantity, setItemQuantity] = useState<number>(1);
   const [itemType, setItemType] = useState<string>("BROŃ");
@@ -27,6 +32,7 @@ const CHEquipment = () => {
     "INNE",
   ];
 
+  // ✅ DODAWANIE → ZUSTAND
   const addEq = () => {
     if (itemName.trim() === "" || itemQuantity <= 0) return;
 
@@ -38,7 +44,8 @@ const CHEquipment = () => {
       isOpen: false,
     };
 
-    setEq((prev) => [...prev, newItem]);
+    const updated = [...eq, newItem];
+    updateCharacter(["eq"], updated);
 
     setItemName("");
     setItemQuantity(1);
@@ -46,6 +53,7 @@ const CHEquipment = () => {
     setItemDescription("");
   };
 
+  // ✅ ZMIANA ILOŚCI → ZUSTAND
   const updateQuantity = (index: number, quantity: number) => {
     const newEq = [...eq];
     if (quantity <= 0) {
@@ -53,19 +61,29 @@ const CHEquipment = () => {
     } else {
       newEq[index].quantity = quantity;
     }
-    setEq(newEq);
+
+    updateCharacter(["eq"], newEq);
   };
 
+  // ✅ USUWANIE → ZUSTAND
   const removeItem = (index: number) => {
     const newEq = [...eq];
     newEq.splice(index, 1);
-    setEq(newEq);
+    updateCharacter(["eq"], newEq);
   };
 
+  // ✅ ROZWIJANIE → ZUSTAND
   const toggleItem = (index: number) => {
     const newEq = [...eq];
     newEq[index].isOpen = !newEq[index].isOpen;
-    setEq(newEq);
+    updateCharacter(["eq"], newEq);
+  };
+
+  // ✅ EDYCJA OPISU → ZUSTAND
+  const updateDescription = (index: number, value: string) => {
+    const newEq = [...eq];
+    newEq[index].description = value;
+    updateCharacter(["eq"], newEq);
   };
 
   return (
@@ -144,13 +162,11 @@ const CHEquipment = () => {
                   {i.name}
                 </span>
                 <span>{i.type}</span>
-                {/* Ilość widoczna przed rozwinięciem */}
                 <span className="ml-2 font-semibold">
                   {i.quantity > 1 ? `x${i.quantity}` : ""}
                 </span>
               </div>
 
-              {/* Panel rozwijany */}
               {i.isOpen && (
                 <div className="mt-2 flex flex-col gap-2">
                   <div className="flex items-center gap-2">
@@ -173,11 +189,7 @@ const CHEquipment = () => {
                     <label>Opis:</label>
                     <textarea
                       value={i.description}
-                      onChange={(e) => {
-                        const newEq = [...eq];
-                        newEq[index].description = e.target.value;
-                        setEq(newEq);
-                      }}
+                      onChange={(e) => updateDescription(index, e.target.value)}
                       className="border-b-2 border-amber-600 outline-none w-full"
                     ></textarea>
                   </div>

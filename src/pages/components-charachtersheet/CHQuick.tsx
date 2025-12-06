@@ -2,8 +2,12 @@ import attack from "../../assets/icons/atkBon.png";
 import magAtc from "../../assets/icons/magAttack.png";
 import perk from "../../assets/icons/perAttack.png";
 import evasion from "../../assets/icons/evasion.png";
+import { useCharacterStore } from "../../store/useCharacterStore";
 
 const CHQuick = () => {
+  const updateCharacter = useCharacterStore(
+    (state: any) => state.updateCharacter
+  );
   return (
     <div className="mx-2">
       <div className="border-2 border-black h-85 w-90 rounded-2xl">
@@ -13,6 +17,7 @@ const CHQuick = () => {
             name=""
             id=""
             className="w-60 min-h-80 max-h-80  border-2 p-2 text-sm rounded-xl m-2 focus:outline-none"
+            onChange={(e) => updateCharacter(["quick", "desc"], e.target.value)}
           />
         </div>
         <div className="float-right w-max">

@@ -1,4 +1,9 @@
+import { useCharacterStore } from "../../store/useCharacterStore";
+
 const CHFuncStats = () => {
+  const updateCharacter = useCharacterStore(
+    (state: any) => state.updateCharacter
+  );
   return (
     <div className="space-y-4">
       {/* --- RP FULL / RP NAT + AC --- */}
@@ -12,6 +17,12 @@ const CHFuncStats = () => {
                 type="number"
                 className="text-center target:border-none w-18 h-12"
                 placeholder="RP FULL"
+                onChange={(e) =>
+                  updateCharacter(
+                    ["functionalStats", "rp", "fullRp"],
+                    Number(e.target.value)
+                  )
+                }
               />
             </div>
             <div className="border-2 border-l-2 p-2 rounded-r-2xl border-black w-28 h-16 flex items-center justify-center">
@@ -19,6 +30,12 @@ const CHFuncStats = () => {
                 type="number"
                 className="text-center w-18 h-12"
                 placeholder="RP NAT"
+                onChange={(e) =>
+                  updateCharacter(
+                    ["functionalStats", "rp", "natRp"],
+                    Number(e.target.value)
+                  )
+                }
               />
             </div>
           </div>
@@ -32,6 +49,12 @@ const CHFuncStats = () => {
               type="number"
               placeholder="AC"
               className="text-center w-11 h-12"
+              onChange={(e) =>
+                updateCharacter(
+                  ["functionalStats", "ac"],
+                  Number(e.target.value)
+                )
+              }
             />
           </div>
         </div>
@@ -45,11 +68,23 @@ const CHFuncStats = () => {
             type="number"
             className="w-30 h-16 text-center border-r-2  border-black text-3xl"
             placeholder="MP"
+            onChange={(e) =>
+              updateCharacter(
+                ["functionalStats", "mana", "current"],
+                Number(e.target.value)
+              )
+            }
           />
           <input
             type="number"
             className="w-30 h-16 text-center border-l border-black text-3xl"
             placeholder="MP"
+            onChange={(e) =>
+              updateCharacter(
+                ["functionalStats", "mana", "full"],
+                Number(e.target.value)
+              )
+            }
           />
         </div>
       </div>
@@ -62,11 +97,23 @@ const CHFuncStats = () => {
             type="number"
             className="w-30 h-16 text-center border-r border-black pl-2 text-4xl"
             placeholder="SP"
+            onChange={(e) =>
+              updateCharacter(
+                ["functionalStats", "stamna", "current"],
+                Number(e.target.value)
+              )
+            }
           />
           <input
             type="number"
             className="w-30 h-16 text-center border-l border-black pl-2 text-4xl"
             placeholder="SP"
+            onChange={(e) =>
+              updateCharacter(
+                ["functionalStats", "stamina", "full"],
+                Number(e.target.value)
+              )
+            }
           />
         </div>
       </div>
@@ -82,6 +129,12 @@ const CHFuncStats = () => {
                 type="number"
                 className="text-center w-16 h-12"
                 placeholder="SPD K"
+                onChange={(e) =>
+                  updateCharacter(
+                    ["functionalStats", "speed", "normal"],
+                    Number(e.target.value)
+                  )
+                }
               />
             </div>
             <div className="border-2 border-l p-2 rounded-r-2xl border-black w-28 h-16 flex items-center justify-center">
@@ -89,6 +142,12 @@ const CHFuncStats = () => {
                 type="number"
                 className="text-center w-16 h-12"
                 placeholder="SPD S"
+                onChange={(e) =>
+                  updateCharacter(
+                    ["functionalStats", "speed", "long"],
+                    Number(e.target.value)
+                  )
+                }
               />
             </div>
           </div>
@@ -102,6 +161,12 @@ const CHFuncStats = () => {
               type="number"
               placeholder="STA R"
               className="text-center w-11 h-12"
+              onChange={(e) =>
+                updateCharacter(
+                  ["functionalStats", "stamina", "regenMax"],
+                  Number(e.target.value)
+                )
+              }
             />
           </div>
         </div>
